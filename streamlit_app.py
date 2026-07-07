@@ -2,6 +2,7 @@
 # Co-authored with CoCo
 # Import python packages
 import streamlit as st
+import pandas as pd
 from snowflake.snowpark.functions import col
 import requests
 import os
@@ -23,8 +24,12 @@ st.write("The name of your Smoothie wil be", name_on_order)
 
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME') ,col('SEaRCH_ON')  )
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
+#st.stop()
+pd_df=mydataframe.to_pandas()
+st.dataframe(pd_df)
 st.stop()
+
 ingredient_list = st.multiselect(
     "Choose upto 5 ingredients:", my_dataframe , max_selections=5
      
