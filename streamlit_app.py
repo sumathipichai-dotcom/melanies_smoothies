@@ -3,7 +3,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
-
+import requests
 import os
 
 cnx = st.connection("snowflake")
@@ -48,7 +48,6 @@ if ingredient_list:
         st.success('Your Smoothie is ordered!', icon="✅")
       
 #New Section to display smoothiefrit nutition information
-import requests
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/banana")
 
